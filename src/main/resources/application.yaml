@@ -1,0 +1,20 @@
+server:
+  port: 8082 #服务器端口号
+spring:
+  #数据库连接配置
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/myfirstdb?characterEncoding=utf-8&useSSL=false&serverTimezone=UTC
+    #数据库端口号+要打开的数据库
+    username: root   #数据库用户名
+    password: hpq960427 #mysql数据库密码
+
+#mybatis的相关配置
+mybatis:
+  #mapper配置文件
+  mapper-locations: classpath:mybatis/mapper/*.xml
+  type-aliases-package: com.example.mybatis_demo.entity
+  #开启驼峰命名
+  configuration:
+    map-underscore-to-camel-case: true
+
