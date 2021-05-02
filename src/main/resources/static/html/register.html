@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="UTF-8">
+  <title>register</title>
+
+</head>
+<body>
+<form action="">
+  <table>
+    <tr align="center">
+      <td colspan="2">欢迎登录</td>
+    </tr>
+    <tr>
+      <td>用户名</td>
+      <td><input type="text" id="username"></td>
+    </tr>
+    <tr>
+      <td>密码</td>
+      <td><input type="password" name="密码" id="password"></td>
+    </tr>
+    <tr align="center"  >
+      <td colspan="2">
+        <button type="button" class="btn">登录</button>
+      </td>
+    </tr>
+  </table>
+</form>
+
+</body>
+<html>
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+<script>
+  var userName=document.getElementsByTagName("input")[0]
+  var password=document.getElementsByTagName("input")[1]
+
+  $(document).ready(function(){
+    $(".btn").click(function(){
+      data=$.ajax({url:"http://localhost:8082/user/isPass?username="+userName.value+"&password="+password.value,async:false});
+      var ispass=data.responseJSON
+      if(ispass){
+        alert("登录成功")
+      }else {
+        alert("登录失败")
+      }
+    });
+  });
+
+</script>
+
+
+
+
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
