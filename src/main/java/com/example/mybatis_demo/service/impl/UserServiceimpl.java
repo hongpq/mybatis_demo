@@ -17,16 +17,21 @@ public class UserServiceimpl implements UserService {
         return userMapper.findAll();
     }
 
-
     @Override
     public String getPassword(String username) {
         return userMapper.getPassword(username);
     }
     //验证密码方法
-    public Boolean isPass(String username, String password) {
+    public int isPass(String username, String password) {
         String truePassword =getPassword(username);
+        if (truePassword == null) return 2;
         if (password.equals(truePassword))
-            return true;
-        else return false;
+            return 1;
+        else return 0;
+    }
+
+    @Override
+    public int addUser(User user) {
+        return userMapper.addUser(user);
     }
 }

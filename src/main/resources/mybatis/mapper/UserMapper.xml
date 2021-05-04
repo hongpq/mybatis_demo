@@ -9,5 +9,10 @@
     <select id="getPassword" resultType="String" >
         SELECT PASSWORD FROM USER WHERE username=#{username}
     </select>
+    <insert id="addUser" parameterType="com.example.mybatis_demo.entity.User" useGeneratedKeys="true" keyProperty="id">
+        <!--insert into user (username,password) values (#{username},#{password}) -->
+        <!--判重插入-->
+        insert into user (username,password) select #{username},#{password} from dual where not exists(select * from user where username=#{username})
+    </insert>
 
 </mapper>
