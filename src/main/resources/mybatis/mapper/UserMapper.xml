@@ -15,4 +15,8 @@
         insert into user (username,password) select #{username},#{password} from dual where not exists(select * from user where username=#{username})
     </insert>
 
+    <update id="updateUser" parameterType="com.example.mybatis_demo.entity.User" useGeneratedKeys="true" keyProperty="id">
+        update user set password=#{password} where username=#{username}
+    </update>
+
 </mapper>

@@ -44,6 +44,20 @@ public class UserController {
         return insertResult;
     }
 
+    /***改***/
+    @PostMapping("/update")
+    public int updateUser(@RequestParam String username, @RequestParam String password, @RequestParam String newpassword) {
+        int ispass = userServiceimpl.isPass(username,password);
+        if(ispass == 1){
+            User user = new User();
+            user.setUsername(username);
+            user.setPassword(newpassword);
+            int updateResult = userServiceimpl.updateUser(user);
+            return updateResult;
+        }
+        return -100+ispass;
+    }
+
 }
 
 

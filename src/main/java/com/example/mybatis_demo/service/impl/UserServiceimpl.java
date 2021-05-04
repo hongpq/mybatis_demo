@@ -12,6 +12,8 @@ import java.util.List;
 public class UserServiceimpl implements UserService {
     @Autowired
     private UserMapper userMapper;
+
+    /***查***/
     @Override
     public List<User> findAll() {
         return userMapper.findAll();
@@ -30,8 +32,15 @@ public class UserServiceimpl implements UserService {
         else return 0;
     }
 
+    /***增***/
     @Override
     public int addUser(User user) {
         return userMapper.addUser(user);
+    }
+
+    /***改***/
+    @Override
+    public int updateUser(User user) {
+        return userMapper.updateUser(user);
     }
 }

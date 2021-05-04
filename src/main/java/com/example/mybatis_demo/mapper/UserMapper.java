@@ -7,7 +7,11 @@ import java.util.List;
 
 @Mapper
 public interface UserMapper {
+    /***查***/
     List<User> findAll();
-    int addUser(User user);
     String getPassword(@Param("username") String username);
+    /***增***/
+    int addUser(User user);
+    /***改***/
+    int updateUser(User user);
 }
