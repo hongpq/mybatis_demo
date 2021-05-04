@@ -25,8 +25,7 @@ public class UserController {
     @CrossOrigin
     @RequestMapping("/isPass")
     public int isPass(String username, String password) {
-        int ispass = userServiceimpl.isPass(username,password);
-        return ispass;
+        return userServiceimpl.isPass(username,password);
     }
 
     @GetMapping("/list")
@@ -37,25 +36,13 @@ public class UserController {
     /***增***/
     @PostMapping("/add")
     public int addUser(@RequestParam String username, @RequestParam String password) {
-        User user = new User();
-        user.setUsername(username);
-        user.setPassword(password);
-        int insertResult = userServiceimpl.addUser(user);
-        return insertResult;
+        return userServiceimpl.addUser(username, password);
     }
 
     /***改***/
     @PostMapping("/update")
     public int updateUser(@RequestParam String username, @RequestParam String password, @RequestParam String newpassword) {
-        int ispass = userServiceimpl.isPass(username,password);
-        if(ispass == 1){
-            User user = new User();
-            user.setUsername(username);
-            user.setPassword(newpassword);
-            int updateResult = userServiceimpl.updateUser(user);
-            return updateResult;
-        }
-        return -100+ispass;
+        return userServiceimpl.updateUser(username, password, newpassword);
     }
 
 }

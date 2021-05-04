@@ -34,13 +34,25 @@ public class UserServiceimpl implements UserService {
 
     /***增***/
     @Override
-    public int addUser(User user) {
+    public int addUser(String username, String password) {
+        User user = new User();
+        user.setUsername(username);
+        user.setPassword(password);
         return userMapper.addUser(user);
     }
 
     /***改***/
     @Override
-    public int updateUser(User user) {
-        return userMapper.updateUser(user);
+    public int updateUser(String username, String password, String newpassword) {
+        int ispass = this.isPass(username,password);
+        if(ispass == 1){
+            User user = new User();
+            user.setUsername(username);
+            user.setPassword(newpassword);
+            int updateResult = userMapper.updateUser(user);
+            return updateResult;
+        }
+        return -100+ispass;
+        //return userMapper.updateUser(user);
     }
 }

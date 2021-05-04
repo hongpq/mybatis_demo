@@ -7,7 +7,7 @@ public interface UserService {
     List<User> findAll();
     String getPassword(String username);
     /***增***/
-    int addUser(User user);
+    int addUser(String username, String password);
     /***改***/
-    int updateUser(User user);
+    int updateUser(String username, String password, String newpassword);
 }
